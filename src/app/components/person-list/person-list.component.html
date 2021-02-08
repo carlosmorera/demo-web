@@ -1,0 +1,71 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by Id"
+        [(ngModel)]="id"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchById()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Person List</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let person of people; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setCurrentPerson(person, i)"
+      >
+
+      </li>
+    </ul>
+
+    <div class="input-group mb-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by Id"
+        [(ngModel)]="id"
+      />
+      <div class="input-group-append">
+    <button class="m-4 btn btn-sm btn-danger" (click)="deletePerson()">
+      Delete
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentPerson">
+      <h4>Person</h4>
+      <div>
+        <label><strong>id:</strong></label>
+      </div>
+      <div>
+        <label><strong>full name:</strong></label>
+
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+
+      </div>
+
+      <a class="badge badge-warning" routerLink="/people/">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentPerson">
+      <br />
+      <p>Please click on a person</p>
+    </div>
+  </div>
+</div>
